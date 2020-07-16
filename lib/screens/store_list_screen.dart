@@ -4,6 +4,7 @@ import '../widgets/stand_creation.dart';
 import 'selected_store_list_screen.dart';
 import '../widgets/date.dart';
 import 'stock_input_screen.dart';
+import 'remaining_stock_screen.dart';
 
 class StoreListScreen extends StatefulWidget {
   @override
@@ -68,6 +69,33 @@ class _StoreListScreenState extends State<StoreListScreen> {
                       });
                 }),
           ),
+          Container(
+              child: InkWell(
+            onTap: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => RemainingStockScreen()))
+            },
+            child: Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(
+                top: 5,
+                bottom: 5,
+              ),
+              padding: const EdgeInsets.all(3.0),
+              color: Colors.blue,
+              child: Text(
+                'Restbestand',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          )) // RemainingStockScreen()
         ],
       ),
       floatingActionButton: FloatingActionButton(
