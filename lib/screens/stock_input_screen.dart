@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_bar_row.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 class GridViewScreen extends StatefulWidget {
   String standName;
@@ -17,26 +19,40 @@ class _GridViewScreenState extends State<GridViewScreen> {
 
   Map gridData = {};
 
+  File _pickedImage;
+
+  Future<void> pickImage() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.getImage(source: ImageSource.gallery);
+    final pickedImageFile = File(pickedImage.path);
+    setState(() {
+      _pickedImage = pickedImageFile;
+    });
+  }
+
   void fillGridWithData() {
     print(standName);
-    gridData = {
-      standName: {
-        'erdbeeren': {
-          'erdbeerenAB': erdbeerenABController.text,
-          'erdbeeren13Uhr': erdbeeren13UhrController.text,
-          'erdbeeren15Uhr': erdbeeren15UhrController.text,
-          'erdbeeren17Uhr': erdbeeren17UhrController.text,
-          'erdbeerenEB': erdbeerenEBController.text,
-        },
-        'erdbeerenGestern': {
-          'erdbeerenGesternAB': erdbeerenGesternABController.text,
-          'erdbeerenGestern13Uhr': erdbeerenGestern13UhrController.text,
-          'erdbeerenGestern15Uhr': erdbeerenGestern15UhrController.text,
-          'erdbeerenGestern17Uhr': erdbeerenGestern17UhrController.text,
-          'erdbeerenGesternEB': erdbeerenGesternEBController.text,
+    setState(() {
+      gridData = {
+        standName: {
+          'erdbeeren': {
+            'erdbeerenAB': erdbeerenABController.text,
+            'erdbeeren13Uhr': erdbeeren13UhrController.text,
+            'erdbeeren15Uhr': erdbeeren15UhrController.text,
+            'erdbeeren17Uhr': erdbeeren17UhrController.text,
+            'erdbeerenEB': erdbeerenEBController.text,
+          },
+          'erdbeerenGestern': {
+            'erdbeerenGesternAB': erdbeerenGesternABController.text,
+            'erdbeerenGestern13Uhr': erdbeerenGestern13UhrController.text,
+            'erdbeerenGestern15Uhr': erdbeerenGestern15UhrController.text,
+            'erdbeerenGestern17Uhr': erdbeerenGestern17UhrController.text,
+            'erdbeerenGesternEB': erdbeerenGesternEBController.text,
+          }
         }
-      }
-    };
+      };
+    });
+
     print(gridData);
     print(erdbeeren13UhrController.text);
   }
@@ -115,11 +131,11 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 widget.standName,
                 style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
               ),
-              FloatingActionButton(onPressed: () => {fillGridWithData()})
             ],
           ),
           Container(
-            height: 350,
+            height: 400,
+            padding: EdgeInsets.only(bottom: 30),
             child: GridView.count(
               padding: const EdgeInsets.all(10),
               crossAxisSpacing: 10,
@@ -464,6 +480,48 @@ class _GridViewScreenState extends State<GridViewScreen> {
               ],
             ),
           ),
+          Row(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.only(left: 40),
+                child: FlatButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  padding: EdgeInsets.all(8.0),
+                  onPressed: () => {
+                    pickImage(),
+                  },
+                  child: Text(
+                    'Foto Upload',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+              Spacer(),
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.white,
+                backgroundImage:
+                    _pickedImage != null ? FileImage(_pickedImage) : null,
+              ),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.only(right: 40),
+                child: FlatButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  padding: EdgeInsets.all(8.0),
+                  onPressed: () => {
+                    fillGridWithData(),
+                  },
+                  child: Text(
+                    'Save',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              )
+            ],
+          )
         ],
       ),
     );

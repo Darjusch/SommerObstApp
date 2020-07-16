@@ -3,7 +3,7 @@ import '../widgets/app_bar_row.dart';
 import '../widgets/stand_creation.dart';
 import 'selected_store_list_screen.dart';
 import '../widgets/date.dart';
-import 'grid_view_screen.dart';
+import 'stock_input_screen.dart';
 
 class StoreListScreen extends StatefulWidget {
   @override
