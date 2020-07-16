@@ -49,9 +49,15 @@ class _StoreListScreenState extends State<StoreListScreen> {
       body: Column(
         children: <Widget>[
           Date(),
-          Text(
-            'Bitte wähle deine/n Stände/Stand aus',
-            style: TextStyle(fontSize: 25),
+          Container(
+            padding: EdgeInsets.only(
+              left: 3,
+              right: 3,
+            ),
+            child: Text(
+              'Bitte wähle deine/n Stände/Stand aus',
+              style: TextStyle(fontSize: 25),
+            ),
           ),
           Container(
             height: 600,
@@ -59,6 +65,12 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 itemCount: stands.length,
                 itemBuilder: (context, index) {
                   return Container(
+                    padding: EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                      left: 3,
+                      right: 3,
+                    ),
                     child: StandCreation(
                       stand: stands[index],
                       onPressed: () {
@@ -101,7 +113,7 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 ),
               ),
             ),
-          )) // RemainingStockScreen()
+          ))
         ],
       ),
       floatingActionButton: FloatingActionButton(

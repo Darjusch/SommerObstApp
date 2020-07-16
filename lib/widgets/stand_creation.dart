@@ -10,13 +10,17 @@ class StandCreation extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: double.infinity,
-        margin: const EdgeInsets.only(
-          top: 5,
-          bottom: 5,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.blue,
+            style: BorderStyle.solid,
+            width: 1.0,
+          ),
+          color: Colors.blue,
+          borderRadius: BorderRadius.circular(30.0),
         ),
+        width: double.infinity,
         padding: const EdgeInsets.all(3.0),
-        color: Colors.blue,
         child: Text(
           stand,
           textAlign: TextAlign.center,

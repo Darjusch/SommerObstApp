@@ -17,16 +17,19 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: AppBarRow(),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Date(),
-          Spacer(flex: 1),
-          Text('Login', style: TextStyle(fontSize: 30)),
-          NameInput(),
-          PasswordInput(),
-          Spacer(flex: 2),
-        ],
+      body: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Date(),
+            Spacer(flex: 1),
+            Text('Login', style: TextStyle(fontSize: 30)),
+            NameInput(),
+            PasswordInput(),
+            Spacer(flex: 2),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward_ios),

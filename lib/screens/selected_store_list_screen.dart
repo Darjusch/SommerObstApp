@@ -26,17 +26,25 @@ class SelectedStoreListScreen extends StatelessWidget {
             child: ListView.builder(
                 itemCount: selectedStands.length,
                 itemBuilder: (context, index) {
-                  return StandCreation(
-                    stand: selectedStands[index],
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              GridViewScreen(selectedStands[index]),
-                        ),
-                      );
-                    },
+                  return Container(
+                    padding: EdgeInsets.only(
+                      top: 5,
+                      bottom: 5,
+                      left: 3,
+                      right: 3,
+                    ),
+                    child: StandCreation(
+                      stand: selectedStands[index],
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                GridViewScreen(selectedStands[index]),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 }),
           ),
