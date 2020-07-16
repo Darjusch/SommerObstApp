@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../widgets/app_bar_row.dart';
-import '../widgets/stand_creation.dart';
+import '../../widgets/app_bar_row.dart';
+import '../../widgets/stand_creation.dart';
 import 'selected_store_list_screen.dart';
-import '../widgets/date.dart';
-import 'stock_input_screen.dart';
-import 'remaining_stock_screen.dart';
+import '../../widgets/date.dart';
+import '../stock_input_screen.dart';
+import '../remaining_stock_screen.dart';
 
 class StoreListScreen extends StatefulWidget {
   @override

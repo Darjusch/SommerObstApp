@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sommerobst_app_beta/screens/store_list_screen.dart';
+import 'package:sommerobst_app_beta/screens/user/store_list_screen.dart';
 import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
 import 'package:sommerobst_app_beta/widgets/date.dart';
 import 'package:sommerobst_app_beta/widgets/name_input.dart';

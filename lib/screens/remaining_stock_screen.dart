@@ -69,47 +69,47 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text(''),
-                  color: Colors.blue[900],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('Restb.'),
-                  color: Colors.blue[700],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('Erd'),
-                  color: Colors.blue[800],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: erdbeerenRestbestand),
-                  color: Colors.blue[700],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('Erd G'),
-                  color: Colors.blue[800],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: erdbeerenGesternRestbestand),
-                  color: Colors.blue[600],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('S Vio'),
-                  color: Colors.blue[700],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelVioRestbestand),
-                  color: Colors.blue[500],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('S Vio G'),
-                  color: Colors.blue[400],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -119,22 +119,22 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('S W'),
-                  color: Colors.blue[200],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelWeissRestbestand),
-                  color: Colors.blue[100],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('S W G'),
-                  color: Colors.blue[200],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelGesternWeissRestbestand),
-                  color: Colors.blue[200],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -144,37 +144,37 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirschen690Restbestand),
-                  color: Colors.blue[400],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('K 7,90'),
-                  color: Colors.blue[500],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirschen790Restbestand),
-                  color: Colors.blue[600],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('K 8,90'),
-                  color: Colors.blue[700],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirschen890Restbestand),
-                  color: Colors.blue[800],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: Text('K 10,90'),
-                  color: Colors.blue[600],
+                  color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirschen1090Restbestand),
-                  color: Colors.blue[500],
+                  color: Colors.blue[300],
                 ),
               ],
             ),

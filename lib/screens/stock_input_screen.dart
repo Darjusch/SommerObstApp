@@ -144,37 +144,37 @@ class _GridViewScreenState extends State<GridViewScreen> {
               children: <Widget>[
                 Container(
                   padding: const EdgeInsets.all(8),
-                  color: Colors.blue[700],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('AB'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('13 Uhr'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('15 Uhr'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('17 Uhr'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('EB'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('Erd'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -199,12 +199,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: erdbeerenEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('Erd G'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -229,12 +229,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: erdbeerenGesternEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('S Vio'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -259,12 +259,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelVioEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('S Vio G'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -292,12 +292,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelVioGesternEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('SW'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -322,12 +322,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelWeissEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('SW G'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -355,12 +355,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: spargelWeissGesternEBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('K 6,90'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -385,12 +385,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirsche690EBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('K 7,90'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -415,12 +415,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirsche790EBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('K 8,90'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -445,12 +445,12 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirsche890EBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: const Text('K 10,90'),
-                  color: Colors.blue[900],
+                  color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -475,7 +475,7 @@ class _GridViewScreenState extends State<GridViewScreen> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   child: TextField(controller: kirsche1090EBController),
-                  color: Colors.blue[600],
+                  color: Colors.blue[500],
                 ),
               ],
             ),

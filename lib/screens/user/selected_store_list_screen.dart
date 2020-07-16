@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/app_bar_row.dart';
-import '../widgets/stand_creation.dart';
-import 'stock_input_screen.dart';
-import '../widgets/date.dart';
+import '../../widgets/app_bar_row.dart';
+import '../../widgets/stand_creation.dart';
+import '../stock_input_screen.dart';
+import '../../widgets/date.dart';
 
 class SelectedStoreListScreen extends StatelessWidget {
   final List<String> selectedStands;
