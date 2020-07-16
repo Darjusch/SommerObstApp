@@ -58,15 +58,21 @@ class _StoreListScreenState extends State<StoreListScreen> {
             child: ListView.builder(
                 itemCount: stands.length,
                 itemBuilder: (context, index) {
-                  return StandCreation(
+                  return Container(
+                    child: StandCreation(
                       stand: stands[index],
                       onPressed: () {
                         if (!selectedStands.contains(stands[index])) {
                           selectedStands.add(stands[index]);
 
                           print(selectedStands);
+                        } else {
+                          selectedStands.remove(stands[index]);
+                          print(selectedStands);
                         }
-                      });
+                      },
+                    ),
+                  );
                 }),
           ),
           Container(

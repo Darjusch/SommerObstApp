@@ -13,7 +13,7 @@ class _NameInputState extends State<NameInput> {
     return TextField(
       decoration: InputDecoration(
           labelText: 'Bitte gebe deinen Namen ein',
-          labelStyle: TextStyle(fontSize: 24)),
+          labelStyle: TextStyle(fontSize: 21)),
       controller: nameController,
     );
   }

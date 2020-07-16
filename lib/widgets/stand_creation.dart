@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class StandCreation extends StatelessWidget {
   final String stand;
   final VoidCallback onPressed;
+
   StandCreation({this.stand, this.onPressed});
   @override
   Widget build(BuildContext context) {

@@ -138,7 +138,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: Text('K 690'),
+                  child: Text('K 6,90'),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -148,7 +148,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: Text('K 790'),
+                  child: Text('K 7,90'),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -158,7 +158,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: Text('K 890'),
+                  child: Text('K 8,90'),
                   color: Colors.blue[700],
                 ),
                 Container(
@@ -168,7 +168,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: Text('K 1090'),
+                  child: Text('K 10,90'),
                   color: Colors.blue[600],
                 ),
                 Container(
