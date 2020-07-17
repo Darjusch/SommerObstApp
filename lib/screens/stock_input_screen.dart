@@ -3,19 +3,19 @@ import '../widgets/app_bar_row.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-class GridViewScreen extends StatefulWidget {
+class StockInputScreen extends StatefulWidget {
   String standName;
-  GridViewScreen(this.standName);
+  StockInputScreen({@required this.standName});
 
   @override
-  _GridViewScreenState createState() =>
-      _GridViewScreenState(standName: this.standName);
+  _StockInputScreenState createState() =>
+      _StockInputScreenState(standName: this.standName);
 }
 
-class _GridViewScreenState extends State<GridViewScreen> {
+class _StockInputScreenState extends State<StockInputScreen> {
   List<String> gridItems = [];
   final String standName;
-  _GridViewScreenState({this.standName});
+  _StockInputScreenState({this.standName});
 
   Map gridData = {};
 

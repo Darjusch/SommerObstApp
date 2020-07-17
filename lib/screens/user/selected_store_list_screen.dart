@@ -28,8 +28,6 @@ class SelectedStoreListScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     padding: EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
                       left: 3,
                       right: 3,
                     ),
@@ -39,8 +37,9 @@ class SelectedStoreListScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                GridViewScreen(selectedStands[index]),
+                            builder: (context) => StockInputScreen(
+                              standName: selectedStands[index],
+                            ),
                           ),
                         );
                       },

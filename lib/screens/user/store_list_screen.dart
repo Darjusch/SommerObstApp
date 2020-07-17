@@ -27,7 +27,9 @@ class _StoreListScreenState extends State<StoreListScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => GridViewScreen(selectedStands[0]),
+          builder: (context) => StockInputScreen(
+            standName: selectedStands[0],
+          ),
         ),
       );
     } else {
@@ -66,8 +68,6 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 itemBuilder: (context, index) {
                   return Container(
                     padding: EdgeInsets.only(
-                      top: 5,
-                      bottom: 5,
                       left: 3,
                       right: 3,
                     ),
@@ -88,21 +88,22 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 }),
           ),
           Container(
-              child: InkWell(
-            onTap: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => RemainingStockScreen()))
-            },
-            child: Container(
-              width: double.infinity,
-              margin: const EdgeInsets.only(
-                top: 5,
-                bottom: 5,
-              ),
+            width: double.infinity,
+            margin: const EdgeInsets.only(
+              top: 5,
+              bottom: 5,
+            ),
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
               padding: const EdgeInsets.all(3.0),
               color: Colors.blue,
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RemainingStockScreen()))
+              },
               child: Text(
                 'Restbestand',
                 textAlign: TextAlign.center,
@@ -113,7 +114,7 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 ),
               ),
             ),
-          ))
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
