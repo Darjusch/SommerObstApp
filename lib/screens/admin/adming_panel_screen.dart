@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/screens/admin/admin_single_stand.dart';
 import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
+import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 import 'package:sommerobst_app_beta/widgets/date.dart';
 import 'package:sommerobst_app_beta/widgets/stand_creation.dart';
 
@@ -29,7 +30,7 @@ class AdminPanelScreen extends StatelessWidget {
             style: TextStyle(fontSize: 25),
           ),
           Container(
-            height: 600,
+            height: 300,
             child: ListView.builder(
                 itemCount: stands.length,
                 itemBuilder: (context, index) {
@@ -52,6 +53,22 @@ class AdminPanelScreen extends StatelessWidget {
                     ),
                   );
                 }),
+          ),
+          CustomButton(
+            buttonName: 'Downloads',
+            nextScreenName: RemainingStockScreen(),
+          ),
+          CustomButton(
+            buttonName: 'Stände hinzufügen/löschen',
+            nextScreenName: RemainingStockScreen(),
+          ),
+          CustomButton(
+            buttonName: 'Fahrer hinzufügen/löschen',
+            nextScreenName: RemainingStockScreen(),
+          ),
+          CustomButton(
+            buttonName: 'Verkäufer hinzufügen/löschen',
+            nextScreenName: RemainingStockScreen(),
           ),
           Container(
             width: double.infinity,

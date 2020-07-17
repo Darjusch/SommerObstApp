@@ -29,17 +29,13 @@ class AdminSingleStand extends StatelessWidget {
               ),
             ),
             CustomButton(
-              buttonName: 'Restbestände',
-              nextScreenName: RemainingStockScreen(),
-            ),
-            CustomButton(
-              buttonName: 'Push-Nachrichten',
+              buttonName: 'Fotos',
               nextScreenName: StockInputScreen(
                 standName: stand,
               ),
             ),
             CustomButton(
-              buttonName: 'Fotos',
+              buttonName: 'Push-Nachrichten',
               nextScreenName: StockInputScreen(
                 standName: stand,
               ),
