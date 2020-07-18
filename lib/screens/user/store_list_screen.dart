@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../widgets/app_bar_row.dart';
-import '../../widgets/stand_creation.dart';
 import 'selected_store_list_screen.dart';
 import '../../widgets/date.dart';
 import '../stock_input_screen.dart';
@@ -12,6 +11,8 @@ class StoreListScreen extends StatefulWidget {
 }
 
 class _StoreListScreenState extends State<StoreListScreen> {
+  bool isClicked = false;
+
   final List<String> stands = [
     'Rugenbarg',
     'Altona ZOB',
@@ -67,22 +68,32 @@ class _StoreListScreenState extends State<StoreListScreen> {
                 itemCount: stands.length,
                 itemBuilder: (context, index) {
                   return Container(
-                    padding: EdgeInsets.only(
-                      left: 3,
-                      right: 3,
-                    ),
-                    child: StandCreation(
-                      stand: stands[index],
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(3.0),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      color: selectedStands.contains(stands[index])
+                          ? Colors.red
+                          : Colors.blue,
                       onPressed: () {
-                        if (!selectedStands.contains(stands[index])) {
-                          selectedStands.add(stands[index]);
-
-                          print(selectedStands);
-                        } else {
-                          selectedStands.remove(stands[index]);
-                          print(selectedStands);
-                        }
+                        setState(() {
+                          if (selectedStands.contains(stands[index])) {
+                            selectedStands.remove(stands[index]);
+                          } else {
+                            selectedStands.add(stands[index]);
+                          }
+                        });
                       },
+                      child: Text(
+                        stands[index],
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 23,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   );
                 }),
