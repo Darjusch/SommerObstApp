@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 
-import '../remaining_stock_screen.dart';
 import '../stock_input_screen.dart';
 
 class AdminSingleStand extends StatelessWidget {
-  String stand;
+  final String stand;
 
   AdminSingleStand({@required this.stand});
 

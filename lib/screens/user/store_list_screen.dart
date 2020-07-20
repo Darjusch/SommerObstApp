@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 import '../../widgets/app_bar_row.dart';
 import 'selected_store_list_screen.dart';
 import '../../widgets/date.dart';
@@ -59,11 +60,11 @@ class _StoreListScreenState extends State<StoreListScreen> {
             ),
             child: Text(
               'Bitte wähle deine/n Stände/Stand aus',
-              style: TextStyle(fontSize: 25),
+              style: TextStyle(fontSize: 21),
             ),
           ),
           Container(
-            height: 600,
+            height: 400,
             child: ListView.builder(
                 itemCount: stands.length,
                 itemBuilder: (context, index) {
@@ -98,34 +99,10 @@ class _StoreListScreenState extends State<StoreListScreen> {
                   );
                 }),
           ),
-          Container(
-            width: double.infinity,
-            margin: const EdgeInsets.only(
-              top: 5,
-              bottom: 5,
+          CustomButton(
+            buttonName: 'Restbestand',
+            nextScreenName: RemainingStockScreen(),
             ),
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0)),
-              padding: const EdgeInsets.all(3.0),
-              color: Colors.blue,
-              onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RemainingStockScreen()))
-              },
-              child: Text(
-                'Restbestand',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 23,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

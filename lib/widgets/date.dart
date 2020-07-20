@@ -9,13 +9,13 @@ class Date extends StatelessWidget {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(
-            top: 20,
+            top: 10,
             right: 20,
-            bottom: 20,
+            bottom: 10,
           ),
           child: Text(
             DateFormat('yMEd').format(DateTime.now()),
-            style: TextStyle(fontSize: 25),
+            style: TextStyle(fontSize: 21),
           ),
         ),
       ],
