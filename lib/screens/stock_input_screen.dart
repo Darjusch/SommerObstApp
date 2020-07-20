@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class StockInputScreen extends StatefulWidget {
-  String standName;
+  final String standName;
   StockInputScreen({@required this.standName});
 
   @override
@@ -48,7 +48,63 @@ class _StockInputScreenState extends State<StockInputScreen> {
             'erdbeerenGestern15Uhr': erdbeerenGestern15UhrController.text,
             'erdbeerenGestern17Uhr': erdbeerenGestern17UhrController.text,
             'erdbeerenGesternEB': erdbeerenGesternEBController.text,
-          }
+          },
+          'spargelVio': {
+            'spargelVioAB': spargelVioABController.text,
+            'spargelVio13Uhr': spargelVio13UhrController.text,
+            'spargelVio15Uhr': spargelVio15UhrController.text,
+            'spargelVio17Uhr': spargelVio17UhrController.text,
+            'spargelVioEB': spargelVioEBController.text,
+          },
+          'spargelVioGestern': {
+            'spargelVioABGestern': spargelVioGesternABController.text,
+            'spargelVio13UhrGestern': spargelVioGestern13UhrController.text,
+            'spargelVio15UhrGestern': spargelVioGestern15UhrController.text,
+            'spargelVio17UhrGestern': spargelVioGestern17UhrController.text,
+            'spargelVioEBGestern': spargelVioGesternEBController.text,
+          },
+          'spargelWeiss': {
+            'spargelWeissAB': spargelWeissABController.text,
+            'spargelWeiss13Uhr': spargelWeiss13UhrController.text,
+            'spargelWeiss15Uhr': spargelWeiss15UhrController.text,
+            'spargelWeiss17Uhr': spargelWeiss17UhrController.text,
+            'spargelWeissEB': spargelWeissEBController.text,
+          },
+          'spargelWeissGestern': {
+            'spargelWeissGesternAB': spargelWeissGesternABController.text,
+            'spargelWeissGestern13Uhr': spargelWeissGestern13UhrController.text,
+            'spargelWeissGestern15Uhr': spargelWeissGestern15UhrController.text,
+            'spargelWeissGestern17Uhr': spargelWeissGestern17UhrController.text,
+            'spargelWeissGesternEB': spargelWeissGesternEBController.text,
+          },
+          'kirsche690': {
+            'kirsche690AB': kirsche690ABController.text,
+            'kirsche69013Uhr': kirsche69013UhrController.text,
+            'kirsche69015Uhr': kirsche69015UhrController.text,
+            'kirsche69017Uhr': kirsche69017UhrController.text,
+            'kirsche690EB': kirsche690EBController.text,
+          },
+          'kirsche790': {
+            'kirsche790AB': kirsche790ABController.text,
+            'kirsche79013Uhr': kirsche79013UhrController.text,
+            'kirsche79015Uhr': kirsche79015UhrController.text,
+            'kirsche79017Uhr': kirsche79017UhrController.text,
+            'kirsche790EB': kirsche790EBController.text,
+          },
+          'kirsche890': {
+            'kirsche890AB': kirsche890ABController.text,
+            'kirsche89013Uhr': kirsche89013UhrController.text,
+            'kirsche89015Uhr': kirsche89015UhrController.text,
+            'kirsche89017Uhr': kirsche89017UhrController.text,
+            'kirsche890EB': kirsche890EBController.text,
+          },
+          'kirsche1090': {
+            'kirsche1090AB': kirsche1090ABController.text,
+            'kirsche109013Uhr': kirsche109013UhrController.text,
+            'kirsche109015Uhr': kirsche109015UhrController.text,
+            'kirsche109017Uhr': kirsche109017UhrController.text,
+            'kirsche1090EB': kirsche1090EBController.text,
+          },
         }
       };
     });
