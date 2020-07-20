@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../widgets/app_bar_row.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StockInputScreen extends StatefulWidget {
   final String standName;
@@ -17,7 +19,8 @@ class _StockInputScreenState extends State<StockInputScreen> {
   final String standName;
   _StockInputScreenState({this.standName});
 
-  Map gridData = {};
+  Map<String, dynamic> gridData = {};
+  String currentDate = DateFormat('yMEd').format(DateTime.now());
 
   File _pickedImage;
 
@@ -32,6 +35,7 @@ class _StockInputScreenState extends State<StockInputScreen> {
 
   void fillGridWithData() {
     print(standName);
+    currentDate = currentDate.replaceAll('/', '.');
     setState(() {
       gridData = {
         standName: {
@@ -109,8 +113,11 @@ class _StockInputScreenState extends State<StockInputScreen> {
       };
     });
 
-    print(gridData);
-    print(erdbeeren13UhrController.text);
+    addDataToFirestore();
+  }
+
+  void addDataToFirestore() {
+    Firestore.instance.collection('Stände/Testing/' + currentDate).document(standName).setData(gridData);
   }
 
   var erdbeerenABController = TextEditingController();
@@ -294,7 +301,7 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioABController),
+                  child: TextField(controller: spargelVioABController, decoration: InputDecoration( hintText: spargelVioABController.text),),
                   color: Colors.blue[200],
                 ),
                 Container(
@@ -560,22 +567,21 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 backgroundImage:
                     _pickedImage != null ? FileImage(_pickedImage) : null,
               ),
-              Spacer(),
-              Container(
-                padding: EdgeInsets.only(right: 40),
-                child: FlatButton(
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  padding: EdgeInsets.all(8.0),
-                  onPressed: () => {
-                    fillGridWithData(),
-                  },
-                  child: Text(
-                    'Save',
-                    style: TextStyle(fontSize: 18),
+                  Container(
+                    padding: EdgeInsets.only(right: 40),
+                    child: FlatButton(
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                      padding: EdgeInsets.all(8.0),
+                      onPressed: () => {
+                        fillGridWithData(),
+                      },
+                      child: Text(
+                        'Save Data',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ),
                   ),
-                ),
-              )
             ],
           )
         ],
