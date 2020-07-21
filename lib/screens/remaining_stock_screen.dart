@@ -83,7 +83,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenRestbestand),
+                  child: TextField(controller: erdbeerenRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -93,7 +93,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGesternRestbestand),
+                  child: TextField(controller: erdbeerenGesternRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -103,7 +103,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioRestbestand),
+                  child: TextField(controller: spargelVioRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -113,7 +113,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelGesternVioRestbestand),
+                  child: TextField(controller: spargelGesternVioRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -123,7 +123,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissRestbestand),
+                  child: TextField(controller: spargelWeissRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -133,7 +133,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelGesternWeissRestbestand),
+                  child: TextField(controller: spargelGesternWeissRestbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -143,7 +143,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen690Restbestand),
+                  child: TextField(controller: kirschen690Restbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -153,7 +153,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen790Restbestand),
+                  child: TextField(controller: kirschen790Restbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -163,7 +163,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen890Restbestand),
+                  child: TextField(controller: kirschen890Restbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
                 Container(
@@ -173,7 +173,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen1090Restbestand),
+                  child: TextField(controller: kirschen1090Restbestand, keyboardType: TextInputType.number,),
                   color: Colors.blue[300],
                 ),
               ],
