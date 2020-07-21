@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sommerobst_app_beta/screens/admin/admin_foto_view.dart';
 import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 
@@ -29,9 +30,7 @@ class AdminSingleStand extends StatelessWidget {
             ),
             CustomButton(
               buttonName: 'Fotos',
-              nextScreenName: StockInputScreen(
-                standName: stand,
-              ),
+              nextScreenName: AdminFotoView(standName: stand,),
             ),
             CustomButton(
               buttonName: 'Push-Nachrichten',

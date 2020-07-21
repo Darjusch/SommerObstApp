@@ -4,6 +4,7 @@ import '../widgets/app_bar_row.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class StockInputScreen extends StatefulWidget {
   final String standName;
@@ -26,11 +27,20 @@ class _StockInputScreenState extends State<StockInputScreen> {
 
   Future<void> pickImage() async {
     final picker = ImagePicker();
-    final pickedImage = await picker.getImage(source: ImageSource.gallery);
+    final pickedImage = await picker.getImage(source: ImageSource.camera);
     final pickedImageFile = File(pickedImage.path);
     setState(() {
       _pickedImage = pickedImageFile;
     });
+    if (_pickedImage != null){
+      uploadImage();
+    }
+  }
+
+  void uploadImage() {
+    currentDate = currentDate.replaceAll('/', '.');
+    var ref = FirebaseStorage.instance.ref().child('Stände/' + standName + '/' + currentDate).child('image_name_placeholder.jpg');
+    ref.putFile(_pickedImage);
   }
 
   void fillGridWithData() {
