@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sommerobst_app_beta/screens/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sommerobst_app_beta/screens/auth_screen.dart';
+import 'package:sommerobst_app_beta/screens/user/store_list_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'GK Sommerobst',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        /*backgroundColor: Colors.green,
+        accentColor: Colors.deepPurple,
+        */accentColorBrightness: Brightness.dark,
       ),
       home: _MyHomePage(),
     );
@@ -22,6 +26,15 @@ class MyApp extends StatelessWidget {
 class _MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LoginScreen();
-  }
+    return MaterialApp(
+    home: StreamBuilder(stream: FirebaseAuth.instance.onAuthStateChanged, builder: (ctx, userSnapshot) {
+      if (userSnapshot.hasData) {
+        print(userSnapshot.data);
+        return StoreListScreen();
+      }
+      return AuthScreen();
+    }),
+    );
+
+        }
 }
