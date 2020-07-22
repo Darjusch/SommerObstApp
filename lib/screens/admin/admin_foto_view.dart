@@ -15,6 +15,7 @@ class AdminFotoView extends StatefulWidget {
 
 class _AdminFotoViewState extends State<AdminFotoView> {
   String standName;
+  String currentDate = DateFormat('yMEd').format(DateTime.now());
 
   _AdminFotoViewState({@required this.standName});
 
@@ -22,9 +23,10 @@ class _AdminFotoViewState extends State<AdminFotoView> {
 
   */
 
-  Future<Widget> _getImage(BuildContext context, String image) async {
+  Future<Widget> _getImage(BuildContext context) async {
+    currentDate = currentDate.replaceAll('/', '.');
     Image m;
-    await FireStorageService.loadImage(context, image).then((downloadUrl) {
+    await FireStorageService.loadImage(context, '/Stände/' + standName + '/'+ currentDate  + '/image_name_placeholder.jpg').then((downloadUrl) {
       m = Image.network(
         downloadUrl.toString(),
         fit: BoxFit.scaleDown,
@@ -45,12 +47,13 @@ class _AdminFotoViewState extends State<AdminFotoView> {
         ),
         Expanded(
           child: FutureBuilder(
-            future: _getImage(context, '/Stände/Rugenbarg/Tue, 7.21.2020/image_name_placeholder.jpg'),
+            future: _getImage(context),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done)
                 return Column(
                   children: <Widget>[
                     Container(
+                      padding: EdgeInsets.only(left: 125),
                       height: MediaQuery.of(context).size.height / 1.25,
                       width: MediaQuery.of(context).size.width / 1.25,
                       child: snapshot.data,
