@@ -13,9 +13,13 @@ class AdminCreateUser extends StatefulWidget {
 class _AdminCreateUserState extends State<AdminCreateUser> {
   final _auth = FirebaseAuth.instance;
 
+  // possible solution to prevent auto login after creating an account
+  // https://stackoverflow.com/questions/54412712/flutter-firebase-authentication-create-user-without-automatically-logging-in
+
+
   void _submitAuthForm(
     String email,
-    String username,
+    String job,
     String password,
   ) async {
     AuthResult authResult;
@@ -32,7 +36,7 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
       print(err);
     }
     await Firestore.instance.collection('users').document(authResult.user.uid).setData({
-      'username': username,
+      'job': job,
       'email': email,
     });
   }

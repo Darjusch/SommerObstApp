@@ -13,11 +13,12 @@ class _AuthScreenState extends State<AuthScreen> {
 
   void _submitAuthForm(
     String email,
-    String username,
+    String job,
     String password,
   ) async {
     AuthResult authResult;
-    authResult = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    authResult = await _auth.signInWithEmailAndPassword(
+        email: email, password: password);
   }
 
   @override

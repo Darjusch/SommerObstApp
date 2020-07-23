@@ -4,17 +4,20 @@ class AuthForm extends StatefulWidget {
   AuthForm(this.submitFn, this.isAdmin);
 
   final bool isAdmin;
-  final void Function(String emailAddress, String username, String password)
+  final void Function(String emailAddress, String job, String password)
       submitFn;
 
   @override
   _AuthFormState createState() => _AuthFormState();
 }
+enum SingingCharacter { verkaeufer, fahrer }
 
 class _AuthFormState extends State<AuthForm> {
+
+  SingingCharacter _job = SingingCharacter.verkaeufer;
+
   final _formKey = GlobalKey<FormState>();
   String _emailAddress = '';
-  String _userName = '';
   String _userPassword = '';
 
   void _trySubmit() {
@@ -25,7 +28,7 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState.save();
       widget.submitFn(
         _emailAddress.trim(),
-        _userName.trim(),
+        _job.toString(),
         _userPassword.trim(),
       );
     }
@@ -57,20 +60,34 @@ class _AuthFormState extends State<AuthForm> {
                     _emailAddress = value;
                   },
                 ),
-                TextFormField(
-                  key: ValueKey('username'),
-                  validator: (value) {
-                    if (value.isEmpty || value.length < 4) {
-                      return 'Please enter at least 4 characters';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                  ),
-                  onSaved: (value) {
-                    _userName = value;
-                  },
+                if (widget.isAdmin)
+                Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: const Text('Verkäufer'),
+                      leading: Radio(
+                        value: SingingCharacter.verkaeufer,
+                        groupValue: _job,
+                        onChanged: (SingingCharacter value) {
+                          setState(() {
+                            _job = value;
+                          });
+                        },
+                      ),
+                    ),
+                    ListTile(
+                      title: const Text('Fahrer'),
+                      leading: Radio(
+                        value: SingingCharacter.fahrer,
+                        groupValue: _job,
+                        onChanged: (SingingCharacter value) {
+                          setState(() {
+                            _job = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
                 ),
                 TextFormField(
                   key: ValueKey('password'),
