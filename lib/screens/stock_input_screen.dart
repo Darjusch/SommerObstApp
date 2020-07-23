@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../widgets/app_bar_row.dart';
+import '../widgets/custom_app_bar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -193,9 +193,7 @@ class _StockInputScreenState extends State<StockInputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[
           Row(

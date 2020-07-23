@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
-import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
+import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 
 class AdminFotoView extends StatefulWidget {
   String standName;
@@ -37,9 +37,8 @@ class _AdminFotoViewState extends State<AdminFotoView> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
+
       body: Column(children: <Widget>[
         Text(
           widget.standName,

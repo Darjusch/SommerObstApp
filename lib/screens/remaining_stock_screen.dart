@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/app_bar_row.dart';
+import '../widgets/custom_app_bar.dart';
 
 class RemainingStockScreen extends StatefulWidget {
   @override
@@ -43,9 +43,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[
           Row(

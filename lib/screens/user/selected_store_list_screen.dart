@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import '../../widgets/app_bar_row.dart';
+import '../../widgets/custom_app_bar.dart';
 import '../../widgets/stand_creation.dart';
 import '../stock_input_screen.dart';
 import '../../widgets/date.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SelectedStoreListScreen extends StatelessWidget {
   final List<String> selectedStands;
+
   SelectedStoreListScreen(this.selectedStands);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[
           Date(),

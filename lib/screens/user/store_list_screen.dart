@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
-import '../../widgets/app_bar_row.dart';
+import '../../widgets/custom_app_bar.dart';
 import 'selected_store_list_screen.dart';
 import '../../widgets/date.dart';
 import '../stock_input_screen.dart';
@@ -47,9 +47,8 @@ class _StoreListScreenState extends State<StoreListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
+
       body: Column(
         children: <Widget>[
           Date(),

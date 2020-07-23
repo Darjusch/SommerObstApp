@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/screens/admin/admin_create_user.dart';
 import 'package:sommerobst_app_beta/screens/admin/admin_single_stand.dart';
 import 'package:sommerobst_app_beta/screens/load_data_screen.dart';
-import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
+import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 import 'package:sommerobst_app_beta/widgets/date.dart';
 import 'package:sommerobst_app_beta/widgets/stand_creation.dart';
@@ -21,9 +21,7 @@ class AdminPanelScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: AppBarRow(),
-      ),
+      appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[
           Date(),

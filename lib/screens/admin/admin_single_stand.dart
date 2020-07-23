@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/screens/admin/admin_foto_view.dart';
-import 'package:sommerobst_app_beta/widgets/app_bar_row.dart';
+import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 
 import '../stock_input_screen.dart';
@@ -13,9 +13,8 @@ class AdminSingleStand extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: AppBarRow(),
-        ),
+        appBar: CustomAppBar(),
+
         body: Column(
           children: <Widget>[
             Text(

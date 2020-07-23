@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:sommerobst_app_beta/widgets/auth/auth_form.dart';
 
 class AdminCreateUser extends StatefulWidget {
@@ -39,6 +40,7 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(),
       backgroundColor: Colors.blue,
       body: AuthForm(_submitAuthForm, true),
     );
