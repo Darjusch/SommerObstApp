@@ -62,12 +62,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             onChanged: (itemIdentifier) {
               if (itemIdentifier == 'logout') {
                 FirebaseAuth.instance.signOut();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AuthScreen(),
-                  ),
-                );
               }
               if (itemIdentifier == 'admin') {
                 check_for_privilege().then((value) {
