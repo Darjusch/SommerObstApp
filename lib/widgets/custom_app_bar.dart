@@ -1,9 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sommerobst_app_beta/screens/admin/adming_panel_screen.dart';
+import 'package:sommerobst_app_beta/screens/auth_screen.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
+class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   final Size preferredSize = Size.fromHeight(50);
+
+  Future<String> check_for_privilege() async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    final String email = user.email.toString();
+    return email;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +48,39 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
                 ),
                 value: 'logout',
               ),
+              DropdownMenuItem(
+                child: Container(
+                  child: Row(children: <Widget>[
+                    Icon(Icons.account_balance),
+                    SizedBox(width: 8),
+                    Text('Admin'),
+                  ]),
+                ),
+                value: 'admin',
+              ),
             ],
             onChanged: (itemIdentifier) {
               if (itemIdentifier == 'logout') {
                 FirebaseAuth.instance.signOut();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AuthScreen(),
+                  ),
+                );
+              }
+              if (itemIdentifier == 'admin') {
+                check_for_privilege().then((value) {
+                  if (value == 'admin@admin.de') {
+                    print("CLICKED");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdminPanelScreen(),
+                      ),
+                    );
+                  }
+                });
               }
             },
           ),
@@ -51,6 +88,4 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget{
       ],
     );
   }
-
-
 }

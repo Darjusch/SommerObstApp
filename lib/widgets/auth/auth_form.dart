@@ -60,35 +60,6 @@ class _AuthFormState extends State<AuthForm> {
                     _emailAddress = value;
                   },
                 ),
-                if (widget.isAdmin)
-                Column(
-                  children: <Widget>[
-                    ListTile(
-                      title: const Text('Verkäufer'),
-                      leading: Radio(
-                        value: SingingCharacter.verkaeufer,
-                        groupValue: _job,
-                        onChanged: (SingingCharacter value) {
-                          setState(() {
-                            _job = value;
-                          });
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text('Fahrer'),
-                      leading: Radio(
-                        value: SingingCharacter.fahrer,
-                        groupValue: _job,
-                        onChanged: (SingingCharacter value) {
-                          setState(() {
-                            _job = value;
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
                 TextFormField(
                   key: ValueKey('password'),
                   validator: (value) {
@@ -105,6 +76,35 @@ class _AuthFormState extends State<AuthForm> {
                     _userPassword = value;
                   },
                 ),
+                if (widget.isAdmin)
+                  Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: const Text('Verkäufer'),
+                        leading: Radio(
+                          value: SingingCharacter.verkaeufer,
+                          groupValue: _job,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _job = value;
+                            });
+                          },
+                        ),
+                      ),
+                      ListTile(
+                        title: const Text('Fahrer'),
+                        leading: Radio(
+                          value: SingingCharacter.fahrer,
+                          groupValue: _job,
+                          onChanged: (SingingCharacter value) {
+                            setState(() {
+                              _job = value;
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
                 SizedBox(height: 12),
                 RaisedButton(
                   color: Colors.blue,
