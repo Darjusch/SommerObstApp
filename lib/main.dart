@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'GK Sommerobst',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+
         accentColorBrightness: Brightness.dark,
       ),
       home: _MyHomePage(),
@@ -25,19 +26,24 @@ class MyApp extends StatelessWidget {
 
 class _MyHomePage extends StatelessWidget {
 
+  Future<String> email;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: StreamBuilder(
           stream: FirebaseAuth.instance.onAuthStateChanged,
           builder: (ctx, userSnapshot) {
-            print("base 1");
+
             if (userSnapshot.hasData) {
-              print("base 2");
-              return StoreListScreen();
+              if (userSnapshot.data.email == 'admin@admin.de'){
+                return AdminPanelScreen();
+              } else {
+                return StoreListScreen();
+              }
+            } else  {
+              return AuthScreen();
             }
-            print("base 3");
-            return AuthScreen();
+
           }),
     );
   }
