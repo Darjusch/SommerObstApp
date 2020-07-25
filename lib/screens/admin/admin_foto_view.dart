@@ -19,26 +19,32 @@ class _AdminFotoViewState extends State<AdminFotoView> {
 
   _AdminFotoViewState({@required this.standName});
 
-  /*
-
-  */
-
   Future<Widget> _getImage(BuildContext context) async {
-    currentDate = currentDate.replaceAll('/', '.');
-    Image m;
-    await FireStorageService.loadImage(context, '/Stände/' + standName + '/'+ currentDate  + '/image_name_placeholder.jpg').then((downloadUrl) {
-      m = Image.network(
-        downloadUrl.toString(),
-        fit: BoxFit.scaleDown,
-      );
-    });
-    return m;
+    try {
+      currentDate = currentDate.replaceAll('/', '.');
+      Image m;
+      await FireStorageService.loadImage(
+              context,
+              '/Stände/' +
+                  standName +
+                  '/' +
+                  currentDate +
+                  '/image_name_placeholder.jpg')
+          .then((downloadUrl) {
+        m = Image.network(
+          downloadUrl.toString(),
+          fit: BoxFit.scaleDown,
+        );
+      });
+      return m;
+    } catch (err) {
+      print(err);
+    }
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-
       body: Column(children: <Widget>[
         Text(
           widget.standName,

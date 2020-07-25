@@ -13,6 +13,10 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return email;
   }
 
+  void logOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -61,7 +65,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ],
             onChanged: (itemIdentifier) {
               if (itemIdentifier == 'logout') {
-                FirebaseAuth.instance.signOut();
+                logOut();
               }
               if (itemIdentifier == 'admin') {
                 check_for_privilege().then((value) {
