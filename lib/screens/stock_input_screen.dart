@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sommerobst_app_beta/screens/image_upload_screen.dart';
 import '../widgets/custom_app_bar.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class StockInputScreen extends StatefulWidget {
   final String standName;
+
   StockInputScreen({@required this.standName});
 
   @override
@@ -18,30 +17,11 @@ class StockInputScreen extends StatefulWidget {
 class _StockInputScreenState extends State<StockInputScreen> {
   List<String> gridItems = [];
   final String standName;
+
   _StockInputScreenState({this.standName});
 
   Map<String, dynamic> gridData = {};
   String currentDate = DateFormat('yMEd').format(DateTime.now());
-
-  File _pickedImage;
-
-  Future<void> pickImage() async {
-    final picker = ImagePicker();
-    final pickedImage = await picker.getImage(source: ImageSource.camera);
-    final pickedImageFile = File(pickedImage.path);
-    setState(() {
-      _pickedImage = pickedImageFile;
-    });
-    if (_pickedImage != null){
-      uploadImage();
-    }
-  }
-
-  void uploadImage() {
-    currentDate = currentDate.replaceAll('/', '.');
-    var ref = FirebaseStorage.instance.ref().child('Stände/' + standName + '/' + currentDate).child('image_name_placeholder.jpg');
-    ref.putFile(_pickedImage);
-  }
 
   void fillGridWithData() {
     print(standName);
@@ -127,8 +107,13 @@ class _StockInputScreenState extends State<StockInputScreen> {
   }
 
   void addDataToFirestore() {
-    Firestore.instance.collection('Stände/Testing/' + currentDate).document(standName).setData(gridData);
+    Firestore.instance
+        .collection('Stände/Testing/' + currentDate)
+        .document(standName)
+        .setData(gridData);
   }
+
+  var imageDescriptionController = TextEditingController();
 
   var erdbeerenABController = TextEditingController();
   var erdbeeren13UhrController = TextEditingController();
@@ -249,27 +234,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeeren13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeeren13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeeren15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeeren15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeeren17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeeren17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -279,27 +279,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGesternABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenGesternABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGestern13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenGestern13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGestern15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenGestern15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGestern17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenGestern17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGesternEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: erdbeerenGesternEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -309,27 +324,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVio13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVio13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVio15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVio15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVio17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVio17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -339,30 +369,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioGesternABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioGesternABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelVioGestern13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioGestern13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelVioGestern15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioGestern15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelVioGestern17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioGestern17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioGesternEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelVioGesternEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -372,27 +414,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeiss13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeiss13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeiss15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeiss15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeiss17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeiss17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -402,30 +459,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissGesternABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissGesternABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelWeissGestern13UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissGestern13UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelWeissGestern15UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissGestern15UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child:
-                      TextField(controller: spargelWeissGestern17UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissGestern17UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissGesternEBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: spargelWeissGesternEBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -435,27 +504,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche690ABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche690ABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche69013UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche69013UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche69015UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche69015UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche69017UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche69017UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche690EBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche690EBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -465,27 +549,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche790ABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche790ABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche79013UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche79013UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche79015UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche79015UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche79017UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche79017UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche790EBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche790EBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -495,27 +594,42 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche890ABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche890ABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche89013UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche89013UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche89015UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche89015UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche89017UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche89017UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche890EBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche890EBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
@@ -525,74 +639,76 @@ class _StockInputScreenState extends State<StockInputScreen> {
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche1090ABController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche1090ABController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[200],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche109013UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche109013UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[300],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche109015UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche109015UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[400],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche109017UhrController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche109017UhrController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirsche1090EBController, keyboardType: TextInputType.number,),
+                  child: TextField(
+                    controller: kirsche1090EBController,
+                    keyboardType: TextInputType.number,
+                  ),
                   color: Colors.blue[500],
                 ),
               ],
             ),
           ),
-          Row(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(left: 40),
-                child: FlatButton(
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  padding: EdgeInsets.all(8.0),
-                  onPressed: () => {
-                    pickImage(),
-                  },
-                  child: Text(
-                    'Foto Upload',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
+          Container(
+            padding: EdgeInsets.only(right: 40),
+            child: FlatButton(
+              color: Colors.blue,
+              textColor: Colors.white,
+              padding: EdgeInsets.all(8.0),
+              onPressed: () => {
+                fillGridWithData(),
+              },
+              child: Text(
+                'Save Data',
+                style: TextStyle(fontSize: 18),
               ),
-              Spacer(),
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.white,
-                backgroundImage:
-                    _pickedImage != null ? FileImage(_pickedImage) : null,
-              ),
-                  Container(
-                    padding: EdgeInsets.only(right: 40),
-                    child: FlatButton(
-                      color: Colors.blue,
-                      textColor: Colors.white,
-                      padding: EdgeInsets.all(8.0),
-                      onPressed: () => {
-                        fillGridWithData(),
-                      },
-                      child: Text(
-                        'Save Data',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                  ),
-            ],
-          )
+            ),
+          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ImageUploadScreen(
+                standName: standName,
+              ),
+            ),
+          )
+        },
+        child: Icon(Icons.image),
       ),
     );
   }
