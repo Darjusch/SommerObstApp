@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/screens/admin/adming_panel_screen.dart';
-import 'package:sommerobst_app_beta/screens/auth_screen.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -35,7 +34,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: [
         Container(
-          padding: EdgeInsets.only(right: 10),
           child: DropdownButton(
             icon: Icon(
               Icons.more_vert,

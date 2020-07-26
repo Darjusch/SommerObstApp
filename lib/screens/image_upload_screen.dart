@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:image_picker/image_picker.dart';
@@ -43,18 +44,31 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     try {
       if (_pickedImage != null) {
         currentDate = currentDate.replaceAll('/', '.');
+        String imageUrl = 'Stände/' + standName + '/' + currentDate + imageDescriptionController.text + '.jpg';
         var ref = FirebaseStorage.instance
             .ref()
             .child('Stände/' + standName + '/' + currentDate)
             .child(imageDescriptionController.text + '.jpg');
         ref.putFile(_pickedImage);
         print('uploaded');
+        saveImageUrl(imageUrl, imageDescriptionController.text);
       }
     } catch (err) {
       print(err);
     }
   }
 
+  void saveImageUrl(imageUrl, description) async {
+    await Firestore.instance
+        .collection('Stände')
+        .document('Testing')
+        .collection(currentDate)
+        .document(standName)
+        .collection('images').document().setData({
+      'imageUrl': imageUrl,
+      'description': description
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
