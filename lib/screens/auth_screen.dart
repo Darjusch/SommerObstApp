@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:sommerobst_app_beta/widgets/auth/auth_form.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 

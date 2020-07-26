@@ -3,21 +3,21 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 
-class AdminFotoView extends StatefulWidget {
+class AdminImageView extends StatefulWidget {
   String standName;
 
-  AdminFotoView({@required this.standName});
+  AdminImageView({@required this.standName});
 
   @override
-  _AdminFotoViewState createState() =>
-      _AdminFotoViewState(standName: this.standName);
+  _AdminImageViewState createState() =>
+      _AdminImageViewState(standName: this.standName);
 }
 
-class _AdminFotoViewState extends State<AdminFotoView> {
+class _AdminImageViewState extends State<AdminImageView> {
   String standName;
   String currentDate = DateFormat('yMEd').format(DateTime.now());
 
-  _AdminFotoViewState({@required this.standName});
+  _AdminImageViewState({@required this.standName});
 
   Future<Widget> _getImage(BuildContext context) async {
     try {
