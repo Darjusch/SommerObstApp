@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "662453902098",
+    "firebase_url": "https://sommerappfirebase.firebaseio.com",
+    "project_id": "sommerappfirebase",
+    "storage_bucket": "sommerappfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662453902098:android:e036e644393bed8469b1cb",
+        "android_client_info": {
+          "package_name": "com.example.sommerobst_app_beta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662453902098-nl1j044sejesr50slafi36ur00qnhmcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ3727hAUeeNS_aohJFOJWWI7WFRK2ey4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662453902098-nl1j044sejesr50slafi36ur00qnhmcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 
-class StandCreation extends StatelessWidget {
-  final String stand;
-  final VoidCallback onPressed;
+class CustomButton extends StatelessWidget {
+  final Widget nextScreenName;
+  final String buttonName;
 
-  StandCreation({this.stand, this.onPressed});
+  CustomButton({
+    @required this.buttonName,
+    @required this.nextScreenName,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(3.0),
+      margin: const EdgeInsets.only(
+        top: 5,
+        bottom: 5,
+      ),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(30.0)),
+        padding: const EdgeInsets.all(3.0),
         color: Colors.blue,
-        onPressed: onPressed,
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => nextScreenName),
+          )
+        },
         child: Text(
-          stand,
+          buttonName,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
