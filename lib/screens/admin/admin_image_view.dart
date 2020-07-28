@@ -29,7 +29,7 @@ class _AdminImageViewState extends State<AdminImageView> {
                   standName +
                   '/' +
                   currentDate +
-                  '/image_name_placeholder.jpg')
+                  '/hallo.jpg')
           .then((downloadUrl) {
         m = Image.network(
           downloadUrl.toString(),
@@ -45,38 +45,42 @@ class _AdminImageViewState extends State<AdminImageView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Column(children: <Widget>[
-        Text(
-          widget.standName,
-          style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
-        ),
-        Expanded(
-          child: FutureBuilder(
-            future: _getImage(context),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done)
-                return Column(
-                  children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(left: 125),
+      body: Container(
+        height: 800,
+        width: 400,
+        child: Column(children: <Widget>[
+          Text(
+            widget.standName,
+            style: TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
+          ),
+          Expanded(
+            child: FutureBuilder(
+              future: _getImage(context),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done)
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          height: MediaQuery.of(context).size.height / 1.25,
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: snapshot.data,
+                        ),
+                      ],
+                    ),
+                  );
+                if (snapshot.connectionState == ConnectionState.waiting)
+                  return Container(
                       height: MediaQuery.of(context).size.height / 1.25,
                       width: MediaQuery.of(context).size.width / 1.25,
-                      child: snapshot.data,
-                    ),
-                  ],
-                );
+                      child: CircularProgressIndicator());
 
-              if (snapshot.connectionState == ConnectionState.waiting)
-                return Container(
-                    height: MediaQuery.of(context).size.height / 1.25,
-                    width: MediaQuery.of(context).size.width / 1.25,
-                    child: CircularProgressIndicator());
-
-              return Container();
-            },
+                return Container();
+              },
+            ),
           ),
-        ),
-      ]),
+        ]),
+      ),
     );
   }
 }
