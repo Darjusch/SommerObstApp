@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sommerobst_app_beta/screens/admin/admin_single_stand.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
+import 'package:sommerobst_app_beta/widgets/stand_creation.dart';
 import '../../widgets/custom_app_bar.dart';
 import 'selected_store_list_screen.dart';
 import '../../widgets/date.dart';
@@ -14,14 +17,8 @@ class StoreListScreen extends StatefulWidget {
 class _StoreListScreenState extends State<StoreListScreen> {
   bool isClicked = false;
 
-  final List<String> stands = [
-    'Rugenbarg',
-    'Altona ZOB',
-    'Blankenese',
-    'Neue Flora',
-    'Holstenstraße'
-  ];
   List<String> selectedStands = [];
+
   void showNextScreen(context) {
     if (selectedStands.length == 0) {
       return;
@@ -48,7 +45,6 @@ class _StoreListScreenState extends State<StoreListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-
       body: Column(
         children: <Widget>[
           Date(),
@@ -62,46 +58,40 @@ class _StoreListScreenState extends State<StoreListScreen> {
               style: TextStyle(fontSize: 21),
             ),
           ),
-          Container(
-            height: 400,
-            child: ListView.builder(
-                itemCount: stands.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(3.0),
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      color: selectedStands.contains(stands[index])
-                          ? Colors.red
-                          : Colors.blue,
-                      onPressed: () {
-                        setState(() {
-                          if (selectedStands.contains(stands[index])) {
-                            selectedStands.remove(stands[index]);
-                          } else {
-                            selectedStands.add(stands[index]);
-                          }
-                        });
-                      },
-                      child: Text(
-                        stands[index],
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 23,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  );
-                }),
+          SingleChildScrollView(
+            child: Container(
+              height: 500,
+              width: 400,
+              child: StreamBuilder(
+                  stream:
+                      Firestore.instance.collection('Standnamen').snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return new Text("Loading");
+                    } else {
+                      List<StandCreation> standItems = [];
+                      for (int i = 0; i < snapshot.data.documents.length; i++) {
+                        DocumentSnapshot snap = snapshot.data.documents[i];
+                        standItems.add(StandCreation(
+                          stand: snap.documentID,
+                          onPressed: () {
+                            selectedStands.add(snap.documentID);
+                          },
+                        ));
+                      }
+                      return ListView.builder(
+                          itemCount: standItems.length,
+                          itemBuilder: (context, index) {
+                            return standItems[index];
+                          });
+                    }
+                  }),
+            ),
           ),
           CustomButton(
             buttonName: 'Restbestand',
             nextScreenName: RemainingStockScreen(),
-            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
