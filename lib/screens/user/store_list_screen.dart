@@ -69,14 +69,37 @@ class _StoreListScreenState extends State<StoreListScreen> {
                     if (!snapshot.hasData) {
                       return new Text("Loading");
                     } else {
-                      List<StandCreation> standItems = [];
+                      List<Container> standItems = [];
                       for (int i = 0; i < snapshot.data.documents.length; i++) {
                         DocumentSnapshot snap = snapshot.data.documents[i];
-                        standItems.add(StandCreation(
-                          stand: snap.documentID,
-                          onPressed: () {
-                            selectedStands.add(snap.documentID);
-                          },
+                        standItems.add(Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(3.0),
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0)),
+                            color: selectedStands.contains(snap.documentID)
+                                ? Colors.red
+                                : Colors.blue,
+                            onPressed: () {
+                              setState(() {
+                                if (selectedStands.contains(snap.documentID)) {
+                                  selectedStands.remove(snap.documentID);
+                                } else {
+                                  selectedStands.add(snap.documentID);
+                                }
+                              });
+                            },
+                            child: Text(
+                              snap.documentID,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ));
                       }
                       return ListView.builder(
