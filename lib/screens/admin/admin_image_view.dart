@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
@@ -22,21 +23,33 @@ class _AdminImageViewState extends State<AdminImageView> {
   Future<Widget> _getImage(BuildContext context) async {
     try {
       currentDate = currentDate.replaceAll('/', '.');
-      Image m;
-      await FireStorageService.loadImage(
-              context,
-              '/Stände/' +
-                  standName +
-                  '/' +
-                  currentDate +
-                  '/hallo.jpg')
-          .then((downloadUrl) {
-        m = Image.network(
+      CollectionReference _documentRef = Firestore.instance
+          .collection('Stände')
+          .document('Testing')
+          .collection(currentDate)
+          .document(standName)
+          .collection('images');
+      Image img;
+      List<Widget> imgList = [];
+      var ds = await _documentRef.getDocuments();
+      for (var doc in ds.documents) {
+        var downloadUrl = await FireStorageService.loadImage(
+          context,
+          '/Stände/' + standName + '/' + currentDate + '/hallo.jpg',
+        );
+        img = Image.network(
           downloadUrl.toString(),
           fit: BoxFit.scaleDown,
         );
-      });
-      return m;
+        imgList.add(img);
+      }
+      // Now function is returning a widget
+      return ListView.builder(
+        itemCount: imgList.length,
+        itemBuilder: (context, index) {
+          return imgList[index];
+        },
+      );
     } catch (err) {
       print(err);
     }
@@ -75,7 +88,7 @@ class _AdminImageViewState extends State<AdminImageView> {
                       width: MediaQuery.of(context).size.width / 1.25,
                       child: CircularProgressIndicator());
 
-                return Container();
+                return Container(child: Text('some error'));
               },
             ),
           ),
