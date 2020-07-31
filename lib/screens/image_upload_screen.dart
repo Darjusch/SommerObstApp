@@ -44,28 +44,26 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     try {
       if (_pickedImage != null) {
         currentDate = currentDate.replaceAll('/', '.');
-        String imageUrl = 'Stände/' + standName + '/' + currentDate + imageDescriptionController.text + '.jpg';
         var ref = FirebaseStorage.instance
             .ref()
             .child('Stände/' + standName + '/' + currentDate)
             .child(imageDescriptionController.text + '.jpg');
         ref.putFile(_pickedImage);
         print('uploaded');
-        saveImageUrl(imageUrl, imageDescriptionController.text);
+        saveImageDescription(imageDescriptionController.text);
       }
     } catch (err) {
       print(err);
     }
   }
 
-  void saveImageUrl(imageUrl, description) async {
+  void saveImageDescription(description) async {
     await Firestore.instance
         .collection('Stände')
         .document('Testing')
         .collection(currentDate)
         .document(standName)
         .collection('images').document().setData({
-      'imageUrl': imageUrl,
       'description': description
     });
   }
