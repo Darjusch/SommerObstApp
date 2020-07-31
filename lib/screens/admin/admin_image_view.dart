@@ -35,7 +35,7 @@ class _AdminImageViewState extends State<AdminImageView> {
       for (var doc in ds.documents) {
         var downloadUrl = await FireStorageService.loadImage(
           context,
-          '/Stände/' + standName + '/' + currentDate + '/hallo.jpg',
+          '/Stände/' + standName + '/' + currentDate + '/' + doc.data['description'] + '.jpg',
         );
         img = Image.network(
           downloadUrl.toString(),
