@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sommerobst_app_beta/screens/admin/adming_panel_screen.dart';
+import 'package:sommerobst_app_beta/screens/admin/admin_panel_screen.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override

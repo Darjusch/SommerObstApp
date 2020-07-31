@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
@@ -22,21 +25,61 @@ class _AdminImageViewState extends State<AdminImageView> {
   Future<Widget> _getImage(BuildContext context) async {
     try {
       currentDate = currentDate.replaceAll('/', '.');
-      Image m;
-      await FireStorageService.loadImage(
-              context,
-              '/Stände/' +
-                  standName +
-                  '/' +
-                  currentDate +
-                  '/hallo.jpg')
-          .then((downloadUrl) {
-        m = Image.network(
-          downloadUrl.toString(),
-          fit: BoxFit.scaleDown,
+      CollectionReference _documentRef = Firestore.instance
+          .collection('Stände')
+          .document('Testing')
+          .collection(currentDate)
+          .document(standName)
+          .collection('images');
+      Image img;
+      List<Widget> stackList = [];
+      var ds = await _documentRef.getDocuments();
+      for (var doc in ds.documents) {
+        var downloadUrl = await FireStorageService.loadImage(
+          context,
+          '/Stände/' +
+              standName +
+              '/' +
+              currentDate +
+              '/' +
+              doc.data['description'] +
+              '.jpg',
         );
-      });
-      return m;
+        img = Image.network(
+          downloadUrl.toString(),
+        );
+        stackList.add(
+            Container(
+          height: 200,
+          width: 300,
+              child: Stack(
+                children: <Widget>[
+                Container(
+                    height: 200,
+                    width: 300,
+                        child: img
+                  ),
+                  Center(
+                    child: Text(
+                      doc.data['description'],
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+          ),
+        );
+      }
+      return ListView.builder(
+        itemCount: stackList.length,
+        itemBuilder: (context, index) {
+          return stackList[index];
+        },
+      );
     } catch (err) {
       print(err);
     }
@@ -75,7 +118,7 @@ class _AdminImageViewState extends State<AdminImageView> {
                       width: MediaQuery.of(context).size.width / 1.25,
                       child: CircularProgressIndicator());
 
-                return Container();
+                return Container(child: Text('some error'));
               },
             ),
           ),
