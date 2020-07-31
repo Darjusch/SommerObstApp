@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -30,24 +32,52 @@ class _AdminImageViewState extends State<AdminImageView> {
           .document(standName)
           .collection('images');
       Image img;
-      List<Widget> imgList = [];
+      List<Widget> stackList = [];
       var ds = await _documentRef.getDocuments();
       for (var doc in ds.documents) {
         var downloadUrl = await FireStorageService.loadImage(
           context,
-          '/Stände/' + standName + '/' + currentDate + '/' + doc.data['description'] + '.jpg',
+          '/Stände/' +
+              standName +
+              '/' +
+              currentDate +
+              '/' +
+              doc.data['description'] +
+              '.jpg',
         );
         img = Image.network(
           downloadUrl.toString(),
-          fit: BoxFit.scaleDown,
         );
-        imgList.add(img);
+        stackList.add(
+            Container(
+          height: 200,
+          width: 300,
+              child: Stack(
+                children: <Widget>[
+                Container(
+                    height: 200,
+                    width: 300,
+                        child: img
+                  ),
+                  Center(
+                    child: Text(
+                      doc.data['description'],
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+          ),
+        );
       }
-      // Now function is returning a widget
       return ListView.builder(
-        itemCount: imgList.length,
+        itemCount: stackList.length,
         itemBuilder: (context, index) {
-          return imgList[index];
+          return stackList[index];
         },
       );
     } catch (err) {
