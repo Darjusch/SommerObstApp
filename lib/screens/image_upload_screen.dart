@@ -51,6 +51,10 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
         ref.putFile(_pickedImage);
         print(currentDate);
         saveImageDescription(imageDescriptionController.text);
+        setState(() {
+          imageDescriptionController.text = '';
+          _pickedImage = null;
+        });
       }
     } catch (err) {
       print(err);
