@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
 import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
+import 'package:snaplist/snaplist.dart';
 
 class AdminImageView extends StatefulWidget {
   String standName;
@@ -67,19 +68,31 @@ class _AdminImageViewState extends State<AdminImageView> {
                     child: img,
                   ),
                 ),
-                Center(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text(
-                      doc.data['description'],
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                Positioned(
+                  bottom: 0.0,
+                  left: 0.0,
+                  right: 0.0,
+                  child: Container(
+                    decoration:
+                        BoxDecoration(color: Colors.black.withOpacity(0.5)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              doc.data['description'],
+                              softWrap: true,
+                              overflow: TextOverflow.clip,
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
