@@ -29,7 +29,7 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
     print('picked');
     try {
       final picker = ImagePicker();
-      final pickedImage = await picker.getImage(source: ImageSource.camera);
+      final pickedImage = await picker.getImage(source: ImageSource.gallery);
       final pickedImageFile = File(pickedImage.path);
       setState(() {
         _pickedImage = pickedImageFile;
@@ -49,7 +49,7 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
             .child('Stände/' + standName + '/' + currentDate)
             .child(imageDescriptionController.text + '.jpg');
         ref.putFile(_pickedImage);
-        print('uploaded');
+        print(currentDate);
         saveImageDescription(imageDescriptionController.text);
       }
     } catch (err) {

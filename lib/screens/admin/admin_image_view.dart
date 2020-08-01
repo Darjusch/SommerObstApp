@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:intl/intl.dart';
@@ -47,30 +48,40 @@ class _AdminImageViewState extends State<AdminImageView> {
         );
         img = Image.network(
           downloadUrl.toString(),
+          height: 200,
+          width: 200,
+          fit: BoxFit.fill,
         );
         stackList.add(
-            Container(
-          height: 200,
-          width: 300,
-              child: Stack(
-                children: <Widget>[
-                Container(
+          Container(
+            padding: EdgeInsets.all(10),
+            height: 200,
+            width: double.infinity,
+            child: Stack(
+              children: <Widget>[
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Container(
                     height: 200,
-                    width: 300,
-                        child: img
+                    width: double.infinity,
+                    child: img,
                   ),
-                  Center(
+                ),
+                Center(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
                     child: Text(
                       doc.data['description'],
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: Colors.white,
                       ),
                     ),
-                  )
-                ],
-              ),
+                  ),
+                )
+              ],
+            ),
           ),
         );
       }

@@ -35,9 +35,8 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
     } catch (err) {
       print(err);
     }
-    await Firestore.instance.collection('users').document(authResult.user.uid).setData({
+    await Firestore.instance.collection('users').document(email).setData({
       'job': job,
-      'email': email,
     });
   }
 
