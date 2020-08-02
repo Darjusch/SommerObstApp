@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
@@ -24,8 +25,7 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
   ) async {
     AuthResult authResult;
     try {
-      authResult = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      register(email, password);
     } on PlatformException catch (err) {
       var message = 'An error occured please check your credentials!';
       if (err.message != null) {
@@ -38,6 +38,12 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
     await Firestore.instance.collection('users').document(email).setData({
       'job': job,
     });
+  }
+
+  static Future<AuthResult> register(String email, String password) async {
+    FirebaseApp app = await FirebaseApp.configure(
+        name: 'Secondary', options: await FirebaseApp.instance.options);
+    return FirebaseAuth.fromApp(app).createUserWithEmailAndPassword(email: email, password: password);
   }
 
   @override
