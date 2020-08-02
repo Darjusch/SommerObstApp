@@ -21,31 +21,34 @@ class SelectedStoreListScreen extends StatelessWidget {
             'Deine/n Stände/Stand',
             style: TextStyle(fontSize: 25),
           ),
-          Container(
-            height: 600,
-            child: ListView.builder(
-                itemCount: selectedStands.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.only(
-                      left: 3,
-                      right: 3,
-                    ),
-                    child: StandCreation(
-                      stand: selectedStands[index],
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => StockInputScreen(
-                              standName: selectedStands[index],
+          SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height - 180,
+              width: MediaQuery.of(context).size.height - 100,
+              child: ListView.builder(
+                  itemCount: selectedStands.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: EdgeInsets.only(
+                        left: 3,
+                        right: 3,
+                      ),
+                      child: StandCreation(
+                        stand: selectedStands[index],
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StockInputScreen(
+                                standName: selectedStands[index],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                }),
+                          );
+                        },
+                      ),
+                    );
+                  }),
+            ),
           ),
         ],
       ),

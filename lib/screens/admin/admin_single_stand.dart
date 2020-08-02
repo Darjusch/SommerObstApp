@@ -4,6 +4,7 @@ import 'package:sommerobst_app_beta/widgets/custom_app_bar.dart';
 import 'package:sommerobst_app_beta/widgets/custom_button.dart';
 
 import '../stock_input_screen.dart';
+import 'admin_push_notification_screen.dart';
 
 class AdminSingleStand extends StatelessWidget {
   final String stand;
@@ -33,8 +34,7 @@ class AdminSingleStand extends StatelessWidget {
             ),
             CustomButton(
               buttonName: 'Push-Nachrichten',
-              nextScreenName: StockInputScreen(
-                standName: stand,
+              nextScreenName: AdminPushNotificationScreen(
               ),
             ),
           ],

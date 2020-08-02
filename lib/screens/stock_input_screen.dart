@@ -178,6 +178,7 @@ class _StockInputScreenState extends State<StockInputScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[

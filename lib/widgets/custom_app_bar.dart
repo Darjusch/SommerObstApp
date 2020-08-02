@@ -26,18 +26,19 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('GK Sommerobst'),
-          Container(
-            height: 50,
-            child: Image.asset(
-              'assets/images/placeholder_logo.png',
-              fit: BoxFit.cover,
-            ),
-          ),
-        ],
+      title:
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(text: 'GK Sommerobst', style: TextStyle(color: Colors.white, fontSize: 20,)),
+                WidgetSpan(
+                  child: Image.asset(
+                    'assets/images/placeholder_logo.png',
+                    height: 15,
+                  ),
+                )
+              ]
+            )
       ),
       actions: [
         Container(

@@ -43,6 +43,7 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: CustomAppBar(),
       body: Column(
         children: <Widget>[
@@ -54,127 +55,129 @@ class _RemainingStockScreenState extends State<RemainingStockScreen> {
               ),
             ],
           ),
-          Container(
-            height: 500,
-            width: double.infinity,
-            child: GridView.count(
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              crossAxisCount: 2,
-              childAspectRatio: 3 / 1,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(''),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('Restb.'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('Erd'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('Erd G'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: erdbeerenGesternRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('S Vio'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelVioRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('S Vio G'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelGesternVioRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('S W'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelWeissRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('S W G'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: spargelGesternWeissRestbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('K 6,90'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen690Restbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('K 7,90'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen790Restbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('K 8,90'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen890Restbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text('K 10,90'),
-                  color: Colors.blue[300],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: TextField(controller: kirschen1090Restbestand, keyboardType: TextInputType.number,),
-                  color: Colors.blue[300],
-                ),
-              ],
+          SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height - 200,
+              width: double.infinity,
+              child: GridView.count(
+                padding: const EdgeInsets.all(20),
+                crossAxisSpacing: 5,
+                mainAxisSpacing: 5,
+                crossAxisCount: 2,
+                childAspectRatio: 3 / 1,
+                children: <Widget>[
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text(''),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('Restb.'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('Erd'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: erdbeerenRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('Erd G'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: erdbeerenGesternRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('S Vio'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: spargelVioRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('S Vio G'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: spargelGesternVioRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('S W'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: spargelWeissRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('S W G'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: spargelGesternWeissRestbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('K 6,90'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: kirschen690Restbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('K 7,90'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: kirschen790Restbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('K 8,90'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: kirschen890Restbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: Text('K 10,90'),
+                    color: Colors.blue[300],
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    child: TextField(controller: kirschen1090Restbestand, keyboardType: TextInputType.number,),
+                    color: Colors.blue[300],
+                  ),
+                ],
+              ),
             ),
           ),
           Row(

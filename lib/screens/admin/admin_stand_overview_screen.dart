@@ -32,8 +32,8 @@ class _AdminStandOverviewScreenState extends State<AdminStandOverviewScreen> {
           ),
           SingleChildScrollView(
             child: Container(
-              height: 500,
-              width: 400,
+              height: MediaQuery.of(context).size.height - 160,
+              width: MediaQuery.of(context).size.height - 20,
               child: StreamBuilder(
                   stream: Firestore.instance.collection('Standnamen').snapshots(),
                   builder: (context, snapshot) {

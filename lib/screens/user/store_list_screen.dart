@@ -58,8 +58,8 @@ class _StoreListScreenState extends State<StoreListScreen> {
           ),
           SingleChildScrollView(
             child: Container(
-              height: 500,
-              width: 400,
+              height: MediaQuery.of(context).size.height - 270,
+              width: MediaQuery.of(context).size.height - 100,
               child: StreamBuilder(
                   stream:
                       Firestore.instance.collection('Standnamen').snapshots(),
