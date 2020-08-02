@@ -17,7 +17,6 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
     Firestore.instance
         .collection('Standnamen')
         .document(standNameController.text).setData({});
-    print("here");
   }
 
   void deleteStand() {
@@ -82,7 +81,10 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
                         )
                     );
                   }
-                  if(standItems.isNotEmpty)
+                  var selectedDoc = snapshot.data.documents.firstWhere(
+                        (doc) => doc.documentID == selectedStand,
+                    orElse: () => null,
+                  );
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -95,7 +97,7 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
                             selectedStand = standValue;
                           });
                         },
-                        value: selectedStand,
+                        value: selectedDoc?.documentID,
                         isExpanded: false,
                         hint: new Text(
                           "Choose stand to delete",
