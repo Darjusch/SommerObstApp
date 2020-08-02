@@ -8,10 +8,12 @@ import 'package:intl/intl.dart';
 
 class ImageUploadScreen extends StatefulWidget {
   final String standName;
+
   ImageUploadScreen({@required this.standName});
 
   @override
-  _ImageUploadScreenState createState() => _ImageUploadScreenState(standName: this.standName);
+  _ImageUploadScreenState createState() =>
+      _ImageUploadScreenState(standName: this.standName);
 }
 
 class _ImageUploadScreenState extends State<ImageUploadScreen> {
@@ -19,21 +21,28 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
 
   _ImageUploadScreenState({@required this.standName});
 
-
   var imageDescriptionController = TextEditingController();
 
   String currentDate = DateFormat('yMEd').format(DateTime.now());
   File _pickedImage;
 
-  Future<void> pickImage() async {
+  Future<void> pickImage(source) async {
     print('picked');
     try {
       final picker = ImagePicker();
-      final pickedImage = await picker.getImage(source: ImageSource.gallery);
-      final pickedImageFile = File(pickedImage.path);
-      setState(() {
-        _pickedImage = pickedImageFile;
-      });
+      if (source == 'camera') {
+        final pickedImage = await picker.getImage(source: ImageSource.camera);
+        final pickedImageFile = File(pickedImage.path);
+        setState(() {
+          _pickedImage = pickedImageFile;
+        });
+      } else if (source == 'gallery') {
+        final pickedImage = await picker.getImage(source: ImageSource.gallery);
+        final pickedImageFile = File(pickedImage.path);
+        setState(() {
+          _pickedImage = pickedImageFile;
+        });
+      }
     } catch (err) {
       print(err);
     }
@@ -67,10 +76,11 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
         .document('Testing')
         .collection(currentDate)
         .document(standName)
-        .collection('images').document().setData({
-      'description': description
-    });
+        .collection('images')
+        .document()
+        .setData({'description': description});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,33 +91,47 @@ class _ImageUploadScreenState extends State<ImageUploadScreen> {
           child: Column(
             children: <Widget>[
               Spacer(),
-              RaisedButton.icon(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(120)),
-                onPressed: () => {
-                  pickImage(),
-                },
-                label: Text('Camera'),
-                icon: Icon(Icons.camera),
+              Row(
+                children: <Widget>[
+                  RaisedButton.icon(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(120)),
+                    onPressed: () => {
+                      pickImage('camera'),
+                    },
+                    label: Text('Camera'),
+                    icon: Icon(Icons.camera),
+                  ),
+                  Spacer(),
+                  RaisedButton.icon(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(120)),
+                    onPressed: () => {
+                      pickImage('gallery'),
+                    },
+                    label: Text('Gallery'),
+                    icon: Icon(Icons.collections),
+                  ),
+                ],
               ),
               Spacer(),
-              if(_pickedImage != null)
-              TextField(
-                decoration:
-                    InputDecoration(hintText: 'A description is required'),
-                controller: imageDescriptionController,
-              ),
+              if (_pickedImage != null)
+                TextField(
+                  decoration:
+                      InputDecoration(hintText: 'A description is required'),
+                  controller: imageDescriptionController,
+                ),
               Spacer(),
-              if(_pickedImage != null)
-              FlatButton(
-                onPressed: () => {
-                  uploadImage(),
-                },
-                color: Colors.blue,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(120)),
-                child: Text('Upload'),
-              ),
+              if (_pickedImage != null)
+                FlatButton(
+                  onPressed: () => {
+                    uploadImage(),
+                  },
+                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(120)),
+                  child: Text('Upload'),
+                ),
               Spacer(),
             ],
           ),
