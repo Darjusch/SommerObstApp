@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sommerobst_app_beta/screens/admin/admin_panel_screen.dart';
+import 'package:sommerobst_app_beta/screens/auth_screen.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
@@ -12,8 +13,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return email;
   }
 
-  void logOut() async {
+  void logOut(context) async {
     await FirebaseAuth.instance.signOut();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AuthScreen(),
+      ),
+    );
   }
 
   @override
@@ -63,7 +70,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
             ],
             onChanged: (itemIdentifier) {
               if (itemIdentifier == 'logout') {
-                logOut();
+                logOut(context);
               }
               if (itemIdentifier == 'admin') {
                 check_for_privilege().then((value) {
