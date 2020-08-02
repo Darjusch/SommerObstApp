@@ -12,13 +12,11 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
 
   var selectedStand;
   var standNameController = TextEditingController();
-  var selectedDoc;
 
   void createStand() {
     Firestore.instance
         .collection('Standnamen')
         .document(standNameController.text).setData({});
-    print("here");
   }
 
   void deleteStand() {
@@ -83,24 +81,20 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
                         )
                     );
                   }
-                  if(standItems.isNotEmpty)
+                  var selectedDoc = snapshot.data.documents.firstWhere(
+                        (doc) => doc.documentID == selectedStand,
+                    orElse: () => null,
+                  );
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.add_to_photos, size: 25.0, color: Colors.blue,),
                       SizedBox(width: 50.0,),
-
                       DropdownButton(
                         items: standItems,
                         onChanged: (standValue) {
                           setState(() {
                             selectedStand = standValue;
-                            selectedDoc = snapshot.data.documents.firstWhere(
-                                  (doc) => doc.documentID == selectedStand,
-                              orElse: () => null,
-                            );
-                            print(selectedDoc?.documentID);
-
                           });
                         },
                         value: selectedDoc?.documentID,
