@@ -12,6 +12,7 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
 
   var selectedStand;
   var standNameController = TextEditingController();
+  var selectedDoc;
 
   void createStand() {
     Firestore.instance
@@ -88,14 +89,21 @@ class _AdminCreateStandScreenState extends State<AdminCreateStandScreen> {
                     children: <Widget>[
                       Icon(Icons.add_to_photos, size: 25.0, color: Colors.blue,),
                       SizedBox(width: 50.0,),
+
                       DropdownButton(
                         items: standItems,
                         onChanged: (standValue) {
                           setState(() {
                             selectedStand = standValue;
+                            selectedDoc = snapshot.data.documents.firstWhere(
+                                  (doc) => doc.documentID == selectedStand,
+                              orElse: () => null,
+                            );
+                            print(selectedDoc?.documentID);
+
                           });
                         },
-                        value: selectedStand,
+                        value: selectedDoc?.documentID,
                         isExpanded: false,
                         hint: new Text(
                           "Choose stand to delete",
